@@ -13,9 +13,9 @@ body {
   color: white;
   height: 100vh;
   padding: 20px;
-  position: fixed;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Push toggle button to bottom */
 }
 
 .sidebar h2 { margin-top: 0; }
@@ -24,13 +24,19 @@ body {
 
 /* Music toggle button */
 .music-toggle {
-  margin-top: auto;
   padding: 10px;
+  margin-top: 0; /* remove extra margin */
+  font-size: 16px;
   background: #e67e22;
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  width: 100%; /* make it full width of sidebar */
+  box-sizing: border-box; /* include padding in width */
+}
+
+.sidebar {
+  overflow-y: auto;
 }
 
 /* Main content styling */
