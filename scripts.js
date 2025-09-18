@@ -15,13 +15,19 @@ if(localStorage.getItem('bgmEnabled') !== null){
 }
 
 // Load chapters JSON
-fetch('data/chapters.json')
-  .then(res => res.json())
-  .then(data => {
-    chapters = data;
-    buildSidebar();
-    loadChapter(1); // Load first chapter by default
-  });
+async function loadChapters() {
+    try {
+        const res = await fetch('data/chapters.json');  // wait for fetch
+        const data = await res.json();                  // wait for JSON parsing
+        chapters = data;
+        buildSidebar();
+        loadChapter(1);
+    } catch (error) {
+    console.error("Failed to load chapters:", error);
+    }
+}
+loadChapters();
+
 
 function buildSidebar() {
   const sidebar = document.querySelector('.sidebar');
