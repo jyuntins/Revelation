@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  background: #f9f9f9;
+  color: #222;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 220px;
+  background: #2c3e50;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 { margin-top: 0; }
+.sidebar a { display: block; color: white; padding: 10px 5px; text-decoration: none; }
+.sidebar a:hover { background: #34495e; }
+
+/* Music toggle button */
+.music-toggle {
+  margin-top: auto;
+  padding: 10px;
+  background: #e67e22;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Main content styling */
+.content {
+  margin-left: 240px;
+  padding: 30px;
+  flex: 1;
+}
