@@ -4,8 +4,14 @@ let bgmEnabled = true;
 
 // Load user preference from localStorage
 if(localStorage.getItem('bgmEnabled') !== null){
-  bgmEnabled = localStorage.getItem('bgmEnabled') === 'true';
-  document.querySelector('.music-toggle').textContent = bgmEnabled ? "🎵 Music On" : "🔇 Music Off";
+    bgmEnabled = localStorage.getItem('bgmEnabled') === 'true';
+    const musicButton = document.querySelector('.music-toggle');
+    if (bgmEnabled) {
+        musicButton.textContent = "🎵 Music On";
+    } 
+    else {
+        musicButton.textContent = "🔇 Music Off";
+    }
 }
 
 // Load chapters JSON
