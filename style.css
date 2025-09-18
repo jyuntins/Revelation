@@ -1,47 +1,100 @@
-body {
+/* Reset and body */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: sans-serif;
   display: flex;
   background: #f9f9f9;
   color: #222;
+  min-height: 100vh;
 }
 
-/* Sidebar styling */
+/* Sidebar */
 .sidebar {
   width: 220px;
   background: #2c3e50;
   color: white;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;             /* use full height of parent */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Push toggle button to bottom */
 }
 
-.sidebar h2 { margin-top: 0; }
-.sidebar a { display: block; color: white; padding: 10px 5px; text-decoration: none; }
-.sidebar a:hover { background: #34495e; }
+/* Chapter links container */
+.chapter-links {
+  flex: 1;                  /* take up remaining space above button */
+  overflow-y: auto;         /* scroll if too many chapters */
+  margin-bottom: 10px;      /* spacing before button */
+}
+
+/* Chapter links */
+.chapter-links a {
+  display: block;
+  color: white;
+  padding: 10px 5px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.chapter-links a:hover {
+  background: #34495e;
+}
+
+/* Sidebar header */
+.sidebar h2 {
+  margin-bottom: 10px;
+}
 
 /* Music toggle button */
 .music-toggle {
   padding: 10px;
-  margin-top: 0; /* remove extra margin */
   font-size: 16px;
+  width: 100%;              /* full width of sidebar */
   background: #e67e22;
   border: none;
   color: white;
   cursor: pointer;
-  width: 100%; /* make it full width of sidebar */
-  box-sizing: border-box; /* include padding in width */
+  border-radius: 4px;
+  flex-shrink: 0;           /* prevent shrinking */
 }
 
-.sidebar {
-  overflow-y: auto;
-}
-
-/* Main content styling */
+/* Main content */
 .content {
-  margin-left: 240px;
+  margin-left: 240px;       /* leave space for sidebar */
   padding: 30px;
   flex: 1;
+  overflow-x: hidden;
+}
+
+/* Optional: style headings and paragraphs */
+.content h1 {
+  margin-bottom: 15px;
+  font-size: 2em;
+}
+
+.content p {
+  line-height: 1.6;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 180px;
+    padding: 15px;
+  }
+
+  .content {
+    margin-left: 200px;
+    padding: 20px;
+  }
 }
