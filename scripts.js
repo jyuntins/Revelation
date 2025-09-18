@@ -30,13 +30,13 @@ loadChapters();
 
 
 function buildSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  chapters.forEach(ch => {
-    const a = document.createElement('a');
-    a.textContent = ch.title;
-    a.onclick = () => loadChapter(ch.id);
-    sidebar.insertBefore(a, sidebar.querySelector('.music-toggle'));
-  });
+    const sidebar = document.querySelector('.sidebar');
+    chapters.forEach(ch => {
+        const a = document.createElement('a');
+        a.textContent = ch.title;
+        a.onclick = () => loadChapter(ch.id);
+        sidebar.insertBefore(a, sidebar.querySelector('.music-toggle'));
+    });
 }
 
 function toggleMusic() {
@@ -70,7 +70,7 @@ function playBgm(trackUrl) {
 }
 
 function loadChapter(id){
-  const chapter = chapters.find(c => c.id === id);
-  document.getElementById('chapter-content').innerHTML = `<h1>${chapter.title}</h1><p>${chapter.text}</p>`;
-  playBgm(chapter.bgm);
+    const chapter = chapters.find(c => c.id === id);
+    document.getElementById('chapter-content').innerHTML = `<h1>${chapter.title}</h1><p>${chapter.text}</p>`;
+    playBgm(chapter.bgm);
 }
