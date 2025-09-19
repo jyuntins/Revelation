@@ -17,8 +17,8 @@
   font-weight: bold;
   margin: 20px 10px;
   color: white;
+  cursor: pointer;
 }
-
 
 .music-icon {
   position: absolute;  
@@ -53,6 +53,22 @@
     border-radius: 0 8px 8px 0;
 }
 
+.chapter-list div {
+  padding: 8px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.chapter-list div:hover {
+  background: #34495e;  /* highlight on hover */
+}
+
+.content {
+  margin-left: 220px;   /* make room for sidebar */
+  padding: 20px;
+  color: #222;
+  line-height: 1.6;     /* nice readable spacing */
+}
 /* Reset */
 /* * {
   box-sizing: border-box;
