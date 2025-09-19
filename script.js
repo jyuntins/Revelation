@@ -1,5 +1,5 @@
 let chapters = [];
-let bgmEnabled = true;
+let bgmEnabled = false;
 let currentBgm = null;
 
 const toggle = document.querySelector('.sidebar-toggle');
@@ -44,7 +44,9 @@ function loadChapter(id) {
       <h1>${chapter.title}</h1>
       <p>${chapter.text}</p>
     `;
-    if (chapter.bgm) {
+    console.log("enable:", bgmEnabled, "chapter:", chapter.id);
+
+    if (chapter.bgm && bgmEnabled) {
       console.log("Playing BGM:", chapter.bgm);
       playBgm(chapter.bgm);
     }

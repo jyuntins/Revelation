@@ -6,6 +6,9 @@
     height: 100vh;       
     background: hsl(210, 42%, 24%); 
     transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: column; */
 }
 
 .sidebar.collapsed {
@@ -51,6 +54,11 @@
     justify-content: center;
     cursor: pointer;
     border-radius: 0 8px 8px 0;
+}
+
+.chapter-list{
+    flex: 1;
+    overflow-y: auto;
 }
 
 .chapter-list div {
