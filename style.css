@@ -1,41 +1,117 @@
-/* Reset and body */
-* {
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 220px;
+    height: 100vh;       
+    background: hsl(210, 42%, 24%); 
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 0px;   /* shrink sidebar */
+}
+
+.sidebar-header {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 20px 10px;
+  color: white;
+}
+
+
+.music-icon {
+  position: absolute;  
+  top: 20px;            
+  right: 10px;          
+
+  width: 28px;           /* make it a small circle */
+  height: 28px;
+  background: white;     /* white circle */
+  border-radius: 50%;    /* make it round */
+
+  display: flex;         /* center the note */
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1em;        /* keep the note inside */
+  cursor: pointer;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 50%;                  /* middle of sidebar */
+    right : -20px;              /* stick just outside right edge */    
+    width: 20px;
+    height: 60px;
+    background: #e67e22;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Reset */
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
-body {
+/* Body */
+/* body {
   font-family: sans-serif;
   display: flex;
   background: #f9f9f9;
   color: #222;
   min-height: 100vh;
-}
+} */
 
-/* Sidebar */
-.sidebar {
-  width: 220px;
+/* Sidebar toggle button */
+/* .sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 220px;            
+  z-index: 2000;
+  
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background: #2c3e50;
   color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+
+  transition: left 0.3s ease;
+} */
+
+/* Sidebar */
+/* .sidebar {
   position: fixed;
-  top: 0;
+  top: 200px;
+  left: 200px;
+  background: red;
+  width: 100px;
+  height: 100px;
+} */
+
+/* Collapsed sidebar */
+/* .sidebar.collapsed + .sidebar-toggle {
   left: 0;
-  height: 100%;             /* use full height of parent */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
+} */
 
 /* Chapter links container */
-.chapter-links {
-  flex: 1;                  /* take up remaining space above button */
-  overflow-y: auto;         /* scroll if too many chapters */
-  margin-bottom: 10px;      /* spacing before button */
-}
+/* .chapter-links {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+} */
 
 /* Chapter links */
-.chapter-links a {
+/* .chapter-links a {
   display: block;
   color: white;
   padding: 10px 5px;
@@ -48,53 +124,32 @@ body {
   background: #34495e;
 }
 
-/* Sidebar header */
-.sidebar h2 {
-  margin-bottom: 10px;
-}
-
-/* Music toggle button */
-.music-toggle {
-  padding: 10px;
-  font-size: 16px;
-  width: 100%;              /* full width of sidebar */
-  background: #e67e22;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
-  flex-shrink: 0;           /* prevent shrinking */
-}
+.chapter-links a.active {
+  background: #1abc9c;
+} */
 
 /* Main content */
-.content {
-  margin-left: 240px;       /* leave space for sidebar */
+/* .content {
+  margin-left: 240px;
   padding: 30px;
   flex: 1;
   overflow-x: hidden;
-}
+  transition: margin-left 0.3s ease;
+} */
 
-/* Optional: style headings and paragraphs */
-.content h1 {
-  margin-bottom: 15px;
-  font-size: 2em;
+/* Expand content when sidebar collapsed */
+/* .content.expanded {
+  margin-left: 20px;
 }
-
-.content p {
-  line-height: 1.6;
-  font-size: 1.1em;
-  margin-bottom: 15px;
-}
-
+ */
 /* Responsive adjustments */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .sidebar {
     width: 180px;
     padding: 15px;
   }
-
   .content {
     margin-left: 200px;
     padding: 20px;
   }
-}
+} */
