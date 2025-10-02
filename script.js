@@ -35,20 +35,28 @@ async function loadChapters() {
   }
 }
 
-function loadChapter(id) {
+async function loadChapter(id) {
   const chapter = chapters.find(c => c.id === id);
   const content = document.getElementById('chapter-content');
-
+  console.log("Loading chapter:", chapter);
   if (chapter) {
-    content.innerHTML = `
-      <h1>${chapter.title}</h1>
-      <p>${chapter.text}</p>
-    `;
-    console.log("enable:", bgmEnabled, "chapter:", chapter.id);
+    try {
+      // Fetch text from external file
+      const res = await fetch(chapter.textFile);
+      const text = await res.text();
 
-    if (chapter.bgm && bgmEnabled) {
-      console.log("Playing BGM:", chapter.bgm);
-      playBgm(chapter.bgm);
+      // Update page
+      content.innerHTML = `
+        <h1>${chapter.title}</h1>
+        <pre>${text}</pre>
+      `;
+
+      if (chapter.bgm && bgmEnabled) {
+        playBgm(chapter.bgm);
+      }
+    } catch (err) {
+      console.error("Failed to load text file:", err);
+      content.innerHTML = `<h1>${chapter.title}</h1><p>(Text file missing)</p>`;
     }
   }
 }
@@ -123,55 +131,3 @@ musicIcon.addEventListener('click', () => {
 loadChapters();
 
 
-// let chapters = [];
-
-// Load chapters JSON
-// async function loadChapters() {
-//     try {
-//         const res = await fetch('data/chapters.json');
-//         const data = await res.json();
-//         chapters = data;
-//         buildSidebar();
-//         loadChapter(1); // Load first chapter
-//     } catch (error) {
-//         console.error("Failed to load chapters:", error);
-//     }
-// }
-// loadChapters();
-
-// Build sidebar with chapter links
-// function buildSidebar() {
-//     const linksContainer = document.querySelector('.chapter-links');
-//     linksContainer.innerHTML = "";
-
-//     chapters.forEach(ch => {
-//         const a = document.createElement('a');
-//         a.textContent = ch.title;
-//         a.onclick = () => loadChapter(ch.id);
-//         linksContainer.appendChild(a);
-//     });
-// }
-
-// Load chapter into content area
-// function loadChapter(id) {
-//     const chapter = chapters.find(c => c.id === id);
-//     document.getElementById('chapter-content').innerHTML =
-//       `<h1>${chapter.title}</h1><p>${chapter.text}</p>`;
-
-//     // Highlight active link
-//     const links = document.querySelectorAll('.chapter-links a');
-//     links.forEach(a => {
-//         a.classList.toggle('active', a.textContent === chapter.title);
-//     });
-// }
-
-// Toggle sidebar collapse/expand
-// function toggleSidebar() {
-//   const sidebar = document.querySelector('.sidebar');
-//   const btn = document.querySelector('.sidebar-toggle');
-
-//   sidebar.classList.toggle('collapsed');
-
-//   // Update icon
-//   btn.textContent = sidebar.classList.contains('collapsed') ? "☰" : "✖";
-// }
